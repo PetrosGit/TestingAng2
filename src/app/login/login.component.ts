@@ -16,7 +16,7 @@ import { UserInfo } from '../models/userinfo';
 export class LoginComponent {
   constructor(private _loginService: LoginService) {}
 
-  doLogin(event: Event) {
+  doLogin(event: any) {
     event.preventDefault();
     this._loginService.onLogin(new UserInfo(
       event.target.email.value,

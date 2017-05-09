@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ClockComponent } from './clock.component'
+import { ClockComponent } from '../clock/clock.component'
 import { Observable } from 'rxjs/Observable';
-import { LoginService } from './login.service'
+import { LoginService } from '../login/login.service'
 
 @Component({
   selector: 'my-app',

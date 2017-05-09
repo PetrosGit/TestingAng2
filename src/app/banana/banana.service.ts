@@ -2,8 +2,8 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { Hero } from './hero'
-import { HEROES } from './mock-heroes';
+import { Hero } from '../models/hero'
+
 
 @Injectable()
 export class BananaService {

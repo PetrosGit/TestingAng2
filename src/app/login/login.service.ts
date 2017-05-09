@@ -2,7 +2,7 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { UserInfo} from './userinfo';
+import { UserInfo} from '../models/userinfo';
 
 @Injectable()
 export class LoginService {

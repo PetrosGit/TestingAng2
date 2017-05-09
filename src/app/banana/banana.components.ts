@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { BananaService } from './banana.service';
 import { Observable } from 'rxjs/Observable';
-import { HEROES } from './mock-heroes';
-import { Hero } from './hero'
+import { HEROES } from '../mock-heroes';
+import { Hero } from '../models/hero'
 
 @Component({
   selector: 'banana',

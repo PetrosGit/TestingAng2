@@ -7,7 +7,7 @@
 
 # dependencies
 /node_modules
-
+git revert [--[no-]edit] [-n] [-m parent-number] [-s] [-S[<keyid>]] <commit>
 # IDEs and editors
 /.idea
 .project
@@ -40,3 +40,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+*.js
+*.js.map

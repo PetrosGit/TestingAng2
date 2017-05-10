@@ -75,7 +75,7 @@ export class BananaComponent {
     //this._bananaService.banana$.subscribe( value => { this.banana = value;console.log(this.banana);});
    }
    ngOnInit(){
-     setTimeout(() => this._bananaService.changeBanana(HEROES),3000);
+     setTimeout(() => this._bananaService.changeBanana(HEROES),1000);
    }
    onSelect(hero: Hero): void {
      this.selectedHero = hero;

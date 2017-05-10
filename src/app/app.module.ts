@@ -1,3 +1,5 @@
+
+import { PrivateGuard } from './private/private-route-guard';
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
@@ -13,6 +15,9 @@ import { ClockService } from './clock/clock.service';
 import { LoginComponent } from './login/login.component';
 import { PrivateComponent } from './private/private.component';
 import { LoginService } from './login/login.service';
+import { LoginGuard } from './login/login-route-guard';
+import { RegisterComponent } from './register/register.component';
+import { RegisterService } from './register/register.service';
 
 @NgModule({
   imports: [
@@ -28,10 +33,17 @@ import { LoginService } from './login/login.service';
         component: AboutUsComponent
       },{
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+        canActivate: [LoginGuard]
       },{
         path: 'private',
-        component: PrivateComponent
+        component: PrivateComponent,
+        canActivate: [PrivateGuard]
+      }
+      ,{
+        path: 'register',
+        component: RegisterComponent,
+        canActivate: [LoginGuard]
       }
     ])
   ],
@@ -43,11 +55,15 @@ import { LoginService } from './login/login.service';
     ClockComponent,
     LoginComponent,
     PrivateComponent,
+    RegisterComponent,
   ],
   providers: [
     BananaService,
     ClockService,
     LoginService,
+    PrivateGuard,
+    RegisterService,
+    LoginGuard,
   ],
   bootstrap: [ AppComponent ]
 })

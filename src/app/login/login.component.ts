@@ -6,10 +6,12 @@ import { UserInfo } from '../models/userinfo';
   selector: 'login',
   template: `
   <form (submit) = "doLogin($event)">
-    <input name="email" type="email" placeholder="Your email">
+    <input name="email" type="email" placeholder="Your email" autofocus>
     <input name="password" type="password" placeholder="Your password">
     <button type="submit">Log in</button>
   </form>
+  <br>
+  <button (click) = 'clickRegister()'> not Registed?? </button>
   `
 })
 
@@ -18,9 +20,13 @@ export class LoginComponent {
 
   doLogin(event: any) {
     event.preventDefault();
+    localStorage.setItem('p','p');
     this._loginService.onLogin(new UserInfo(
       event.target.email.value,
       event.target.password.value)
     );
+   }
+   clickRegister(){
+     this._loginService.clickedRegister();
    }
 }

@@ -1,19 +1,29 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router'
-import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { UserInfo} from '../models/userinfo';
 
 @Injectable()
 export class LoginService {
-  private _access: BehaviorSubject<Boolean> = new BehaviorSubject<Boolean>(false);
-  access$: Observable<Boolean> = this._access as Observable<Boolean>
+  access$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor(private _router: Router){
 
   }
     onLogin(info: UserInfo) {
-      this._access.next(true);
-      this._router.navigate(['/private']);
+      if (
+        localStorage.getItem(info.email) === info.password
+      ) {
+        this.access$.next(true);
+        this._router.navigate(['/private']);
+      }
+      else {
+        alert('Username or password did not match!')
+      }
+
+    }
+
+    clickedRegister(){
+      this._router.navigate(['/register']);
     }
 }

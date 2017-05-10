@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
 import { ClockComponent } from '../clock/clock.component'
 import { Observable } from 'rxjs/Observable';
 import { LoginService } from '../login/login.service'
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
 
 @Component({
   selector: 'my-app',
@@ -12,22 +14,24 @@ import { LoginService } from '../login/login.service'
      <router-outlet></router-outlet>
      <a routerLink="/aboutus">AboutUs</a>
      <router-outlet></router-outlet>
-     <a routerLink={{privateLink}}>{{privateTag}}</a>
+     <a routerLink="/private" *ngIf = "access">Private</a>
+     <router-outlet></router-outlet>
+     <a routerLink= "/login" *ngIf = "!access">Login</a>
      <router-outlet></router-outlet>`
 
 })
 
 export class AppComponent {
   title = 'Tour of Heroes';
-  access: Boolean = false;
-  access$: Observable<Boolean> = this._loginService.access$;
-  privateLink: String = '/login';
-  privateTag: String =  'Login'
+  access = false;
+  access$: BehaviorSubject<boolean> = this._loginService.access$;
   constructor(private _loginService: LoginService){
-    this.access$.subscribe((access: Boolean) => {
-      this.privateLink =  access ? '/private' : '/login';
-      this.privateTag = access ? 'Private' :  'Login';
+  }
 
+  ngOnInit(){
+      this.access$.subscribe((access: boolean) => {
+      this.access = access;
     });
   }
+
 }
